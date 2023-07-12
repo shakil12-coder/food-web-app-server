@@ -4,21 +4,28 @@ const port = process.env.PORT || 5000;
 const connectDatbase = require("./db");
 const dotenv = require("dotenv");
 const router = require("./router/CreateUser.js");
+const cors = require("cors");
 
 dotenv.config({
   path: "./config.env",
 });
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 connectDatbase();
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin  , X-Requested-With , Content-Type , Accept"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin  , X-Requested-With , Content-Type , Accept"
+//   );
+//   next();
+// });
 
 app.use(express.json());
 app.use("/api", require("./router/CreateUser.js"));
