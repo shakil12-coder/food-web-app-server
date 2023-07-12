@@ -3,7 +3,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 const connectDatbase = require("./db");
 const dotenv = require("dotenv");
-const router = require("./router/CreateUser.js");
 const cors = require("cors");
 
 dotenv.config({

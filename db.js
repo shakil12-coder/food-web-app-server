@@ -2,11 +2,14 @@ const mongoose = require("mongoose");
 
 const conectDatabase = async () => {
   try {
-    await mongoose.connect(process.env.DB, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      connectTimeoutMS: 30000,
-    });
+    await mongoose.connect(
+      "mongodb+srv://shakilFood:wSMCPZxWQ1PfXpSp@cluster0.rmgpzek.mongodb.net/goFood?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        connectTimeoutMS: 30000,
+      }
+    );
     console.log("database connected successfully");
     const collection_foodItems =
       mongoose.connection.db.collection("food_items");
